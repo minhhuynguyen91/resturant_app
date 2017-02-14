@@ -2,6 +2,28 @@
 
 <div class="btn-group" role="group" aria-label="Basic example">
   <% @sections.each do |section| %>
-    <%= link_to section.name, menu_path(:section => section.id), class: "btn #{params[:section] == section.id.to_s ? 'btn-primary' : 'btn-secondary'}" %>
+    <%= link_to section.name, menu_path(:section_id => section.id), class: "btn #{params[:section_id] == section.id.to_s ? 'btn-primary' : 'btn-secondary'}" %>
   <% end %>
 </div>
+
+<% if @current_section %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Image</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @current_section.food_items.each do |food| %>
+      <tr>
+        <td> <%= food.name  %> </td>
+        <td> <%= food.price %> </td>
+        <td><%=image_tag food.image_url  %> </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  
+<% end %>
