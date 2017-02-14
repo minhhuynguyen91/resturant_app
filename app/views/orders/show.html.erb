@@ -1,0 +1,29 @@
+<% if flash[:success] %>
+  
+<div class="alert alert-success">
+  <%= flash[:success] %>
+</div>
+
+<% end %>
+<br>
+
+<h1> The order page item <%= @food_item.name %> </h1>
+
+<br>
+
+<div class="card">
+  <div class="card-header">
+    Order card<br> 
+    <%= @date_time.strftime("%d, %b %Y; %H:%M") %>
+  </div>
+  <div class="card-block">
+    <p class="card-text"> Customer name: <%= @order.customer_name %> </p>
+    <p class="card-text"> Contact phone: <%= @order.phone_number %> </p>
+    <p class="card-text"> Quantity: <%= @order.quantity %> </p>
+  </div>
+  <div class="card-footer">
+    <p> Total: <%= number_to_currency (@food_item.price * @order.quantity) %>  </p>
+  </div>
+  
+</div>
+<%= link_to 'Back to order list',  food_item_orders_path(@food_item),class:'btn btn-primary' %>
