@@ -11,6 +11,19 @@
   <% @sections.each do |section| %>
     <%= link_to section.name, menu_path(:section_id => section.id), class: "btn #{params[:section_id] == section.id.to_s ? 'btn-primary' : 'btn-secondary'}" %>
   <% end %>
+
+  <div class="btn-group" role="group">
+    <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Sort by
+    </button>
+    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+      <%= link_to 'Sort by name', menu_path(:sort_type => 'name'), class:'dropdown-item' %>
+      <%= link_to 'Sort by highest price', menu_path(:sort_type => 'high_price'), class:'dropdown-item' %>
+      <%= link_to 'Sort by lowest price', menu_path(:sort_type => 'low_price'), class:'dropdown-item' %>
+    </div>
+  </div>
+
+
 </div>
 
 <% if @current_section %>
@@ -34,5 +47,29 @@
       <% end %>
     </tbody>
   </table>
-  
+
+<% else %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Image</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <% @food_items.each do |food| %>
+      <tr>
+        <td> <%= food.name  %> </td>
+        <td> <%= number_to_currency food.price %> </td>
+        <td> <%= image_tag food.image_url_or_default  %> </td>
+        <td> <%= link_to "Add to order", new_food_item_order_path(food) %>  </td>
+        <td> <%= link_to "View orders", food_item_orders_path(food) %>  </td>
+      </tr>
+      <% end %>
+      
+    </tbody>
+  </table>
+
 <% end %>
