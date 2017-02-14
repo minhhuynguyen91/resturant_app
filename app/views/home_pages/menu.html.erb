@@ -19,8 +19,9 @@
       <% @current_section.food_items.each do |food| %>
       <tr>
         <td> <%= food.name  %> </td>
-        <td> <%= food.price %> </td>
-        <td><%=image_tag food.image_url  %> </td>
+        <td> <%= number_to_currency food.price %> </td>
+        <td> <%=image_tag food.image_url_or_default  %> </td>
+        <td> <%= link_to "Add to order", new_food_item_order_path(food) %>  </td>
       </tr>
       <% end %>
     </tbody>
