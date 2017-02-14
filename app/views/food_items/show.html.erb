@@ -1,29 +1,31 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @food_item.name %>
-</p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @food_item.description %>
-</p>
+<h1> <%= @food_item.name %> </h1>
 
-<p>
-  <strong>Price:</strong>
-  <%= @food_item.price %>
-</p>
+<div class="row">
+  <div class="col-8">
+    <%= image_tag("#{@food_item.image_url}",  :alt => "home image", :width => '100%', :height => '100%') %>
+  </div>
+  <div class="col-4">
+    <p>
+      <strong>Description:</strong>
+      <%= @food_item.description %>
+    </p>
+    
+    <p>
+      <strong>Price:</strong>
+      <%= number_to_currency @food_item.price %>
+    </p>
+    
+    <p>
+      <strong>Section:</strong>
+      <%= @food_item.section.name %>
+    </p>
 
-<p>
-  <strong>Section:</strong>
-  <%= @food_item.section.name %>
-</p>
+  </div>
+</div>
 
-<p>
-  <strong>Image url:</strong>
-  <%= @food_item.image_url %>
-</p>
 
 <%= link_to 'Edit', edit_food_item_path(@food_item) %> |
 <%= link_to 'Back', food_items_path %>

@@ -13,7 +13,7 @@ class HomePagesController < ApplicationController
       when "low_price"
         @food_items = FoodItem.all.order(:price)
       else
-        @food_items = FoodItem.all
+        @food_items = FoodItem.all.order(:id)
     end
 
 
