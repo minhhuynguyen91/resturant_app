@@ -15,8 +15,10 @@ class HomePagesController < ApplicationController
       else
         @food_items = FoodItem.all.order(:id)
     end
-
-
+    
+    if params[:search]
+      @food_items = FoodItem.search(params[:search])
+    end
   end
 
   def contact_us

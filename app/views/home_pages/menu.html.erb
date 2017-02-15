@@ -1,7 +1,12 @@
 <h1> Menu </h1>
 
 <br>
+<%= form_tag(menu_path, :method => "get") do %>
+  <%= text_field_tag :search, params[:search], placeholder: 'Search food name' %>
+  <button type='submit', class='btn btn-outline-success my-2 my-sm-0'>  Search </button>
+<% end %>
 
+<br>
 <p>
   <%= link_to 'Add food', new_food_item_path, class: 'btn btn-primary'%>
 </p>
@@ -23,6 +28,7 @@
     </div>
   </div>
 
+  
 
 </div>
 
