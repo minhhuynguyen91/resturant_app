@@ -4,6 +4,8 @@ class FoodItem < ApplicationRecord
   
   validates :name, presence: true
   
+  is_impressionable
+  
   def image_url_or_default
     image_url.presence || "http://loremflickr.com/320/240/moutain"
   end
