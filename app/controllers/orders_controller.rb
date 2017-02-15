@@ -18,7 +18,14 @@ class OrdersController < ApplicationController
   
   def show
     @food_item = FoodItem.find(params[:food_item_id])
-    @order = @food_item.orders.build(order_params)
+    @order = @food_item.orders.find(params[:id])
+    @date_time = DateTime.parse(@order.created_at.to_s)
+
+  end
+  
+  def index
+    @food_item = FoodItem.find(params[:food_item_id])
+    @orders = @food_item.orders.all
   end
   
   private
