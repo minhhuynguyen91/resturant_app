@@ -14,6 +14,9 @@ class FoodItemsController < ApplicationController
   def show
     @food_item = FoodItem.find(params[:id])
     impressionist(@food_item)
+    @food_item.view = @food_item.impressionist_count
+    @food_item.save
+    
   end
 
   # GET /food_items/new

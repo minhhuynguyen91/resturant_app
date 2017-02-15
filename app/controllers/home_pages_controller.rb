@@ -12,6 +12,8 @@ class HomePagesController < ApplicationController
         @food_items = FoodItem.all.order(:price => :desc)
       when "low_price"
         @food_items = FoodItem.all.order(:price)
+      when "view"
+        @food_items = FoodItem.all.order(:view => :desc)
       else
         @food_items = FoodItem.all.order(:id)
     end
