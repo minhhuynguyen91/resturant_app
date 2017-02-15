@@ -8,7 +8,7 @@
 
 if Section.all.size == 0
    puts "Put the data section"
-   %w[Breakfast Lunch Dinner Drinks].each do |name|
+   %w[Breakfast Lunch Dinner Drinks Cuisine].each do |name|
      Section.create!(:name => name)
    end
 else
