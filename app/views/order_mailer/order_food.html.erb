@@ -1,0 +1,16 @@
+<h1>Order for <%= @food_item.name %> </h1>
+
+
+<p> Customer name: <%= @order.customer_name %> </p>
+<p> Contact phone: <%= @order.phone_number %> </p>
+<p> Address: <%= @order.address %> </p>
+<p> Quantity: <%= @order.quantity %> x <%= @food_item.price %> </p>
+<p> Delivery: <%= (@order.delivery ? "YES (extra #{number_to_currency 20000})" : "NO") %> </p>
+<br>
+<% if @order.coupon == "CODERSCHOOL" %>
+  <p> COUPON CODE: VALID (Discount 50% of the total price) </p>
+  <br>
+  <p> Total: <%= number_to_currency ((@food_item.price * @order.quantity + (@order.delivery ? 1 : 0) * 20000 ) / 2 )  %>  </p>
+<% else %>
+  <p> Total: <%= number_to_currency (@food_item.price * @order.quantity + (@order.delivery ? 1 : 0) * 20000 ) %>  </p>
+<% end %>

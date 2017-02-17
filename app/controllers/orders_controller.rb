@@ -9,8 +9,10 @@ class OrdersController < ApplicationController
     @food_item = FoodItem.find(params[:food_item_id])
     @order = @food_item.orders.build(order_params)
     if @order.save
+      OrderMailer.order_food(@food_item, @order).deliver
       flash[:success] = "Thank you for your order"
       redirect_to food_item_order_path(@food_item, @order)
+      
     else
       render 'new'
     end
