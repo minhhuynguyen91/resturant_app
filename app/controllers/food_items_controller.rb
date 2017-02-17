@@ -17,6 +17,8 @@ class FoodItemsController < ApplicationController
     @food_item.view = @food_item.impressionist_count
     @food_item.save
     
+    @comments = @food_item.comments.all
+    
   end
 
   # GET /food_items/new

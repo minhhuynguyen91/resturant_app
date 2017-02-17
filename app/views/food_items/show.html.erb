@@ -1,11 +1,8 @@
-<p id="notice"><%= notice %></p>
-
-
 <h1> <%= @food_item.name %> </h1>
 
 <div class="row">
   <div class="col-8">
-    <%= image_tag("#{@food_item.image_url}",  :alt => "home image", :width => '100%', :height => '100%') %>
+    <%= image_tag("#{@food_item.image_url}", :alt => "home image", :size => "600x480") %>
   </div>
   <div class="col-4">
     <p>
@@ -23,9 +20,35 @@
       <%= @food_item.section.name %>
     </p>
 
+  <p> ------------------------------ </p>
+  <%= form_for Comment.new, url: food_item_comments_path(@food_item) do |f| %>
+    <div class='form-group'>
+      <%= f.label :Name %>
+      <%= f.text_field :name, class:'form-control' %>
+    </div>
+    
+    <div class='form-group'>
+      <%= f.label :Content %>
+      <%= f.text_field :content, class:'form-control' %>
+    </div>
+    
+    <div class='form-group'>
+      <%= f.label :Rate %>
+      <%= f.select :rate, options_for_select(0..5),  class:'form-control' %>
+    </div>
+    
+    <%= f.submit "Add comment", class:'btn btn-primary' %>
+
+  <% end %>
+  
+  
   </div>
+  
+  
 </div>
 
 
 <%= link_to 'Edit', edit_food_item_path(@food_item) %> |
 <%= link_to 'Back', food_items_path %>
+
+

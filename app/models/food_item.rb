@@ -4,6 +4,8 @@ class FoodItem < ApplicationRecord
   
   validates :name, presence: true
   
+  has_many :comments, dependent: :destroy
+  
   is_impressionable
   
   def image_url_or_default

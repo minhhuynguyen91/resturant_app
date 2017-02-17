@@ -14,3 +14,16 @@ if Section.all.size == 0
 else
    puts "Nothing more to add"
 end
+
+if FoodItem.all.size == 0
+  10.times do |i|
+    FoodItem.create!(
+      :name => Faker::Name.name,
+      :description => Faker::Food.ingredient,
+      :price => Faker::Number.between(10, 50),
+      :section_id => Faker::Number.between(1, 4),
+      :image_url => Faker::LoremPixel.image("50x60"),
+      :view => Faker::Number.between(1, 20)
+    )
+  end
+end
