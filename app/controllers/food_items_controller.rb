@@ -18,8 +18,22 @@ class FoodItemsController < ApplicationController
     @food_item.save
     
     @comments = @food_item.comments.all
+    @avg_score = calculate_avg(@comments)
     
   end
+  
+  def calculate_avg(comments)
+    if comments.size == 0
+      return 0
+    else
+      total_score = 0
+      comments.each do |comment|
+        total_score = total_score + comment.rate
+      end
+      return (total_score / comments.size.to_f).round(1)
+    end
+  end
+  
 
   # GET /food_items/new
   def new

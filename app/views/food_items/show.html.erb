@@ -1,7 +1,11 @@
-<h1> <%= @food_item.name %> </h1>
+
 
 <div class="row">
   <div class="col-8">
+    <h1> <%= @food_item.name %> 
+    <span style="float:right;"> <%= @avg_score %> <i class="fa fa-star" aria-hidden="true"></i>  </span> 
+    </h1>
+    
     <%= image_tag("#{@food_item.image_url}", :alt => "home image", :size => "600x480") %>
   </div>
   <div class="col-4">
@@ -21,7 +25,6 @@
     </p>
 
   <%= render @comments %>
-  
   
   
   <p> ------------------------------ </p>
