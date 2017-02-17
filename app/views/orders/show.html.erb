@@ -19,27 +19,26 @@
   <div class="card-block">
     <p class="card-text"> Customer name: <%= @order.customer_name %> </p>
     <p class="card-text"> Contact phone: <%= @order.phone_number %> </p>
-    <p class="card-text"> Quantity: <%= @order.quantity %> </p>
-    <p> <%= check_box_tag 'delivery'%> Delivery </p>
-
-  </div>
-  <div class="card-footer">
-    <p id="total"> Total: <%= number_to_currency (@food_item.price * @order.quantity) %>  </p>
+    <p class="card-text"> Address: <%= @order.address %> </p>
+    <p class="card-text"> Quantity: <%= @order.quantity %> x <%= @food_item.price %> </p>
+    <p class="card-text"> Delivery: <%= (@order.delivery ? "YES (extra #{number_to_currency 20000})" : "NO") %> </p>
+    <% if @order.coupon == "CODERSCHOOL" %>
+      <p class="card-text"> COUPON CODE: VALID (Discount 50% of the total price) </p>
   </div>
   
+      <div class="card-footer">
+        <p id="total"> Total: <%= number_to_currency ((@food_item.price * @order.quantity + (@order.delivery ? 1 : 0) * 20000 ) / 2 )  %>  </p>
+      </div>
+    <% else %>
+  </div>
+      <div class="card-footer">
+        <p id="total"> Total: <%= number_to_currency (@food_item.price * @order.quantity + (@order.delivery ? 1 : 0) * 20000 ) %>  </p>
+      </div>
+    <% end %>
+  
+  
+  
 </div>
+<br>
 <%= link_to 'Back to order list',  food_item_orders_path(@food_item),class:'btn btn-primary' %>
 
-<script>
-
-document.getElementById("delivery").onclick = function() {
-  if (this.checked) {
-    var total_value = "Total: <%= number_to_currency (@food_item.price * @order.quantity + 20000) %>"
-
-  } else {
-    var total_value = "Total: <%= number_to_currency (@food_item.price * @order.quantity) %>"
-  }
-  document.getElementById("total").innerHTML = total_value;
-}
-
-</script>
