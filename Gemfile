@@ -58,3 +58,4 @@ end
 
 gem 'impressionist'
 gem 'faker'
+gem "font-awesome-rails"

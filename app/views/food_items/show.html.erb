@@ -20,6 +20,10 @@
       <%= @food_item.section.name %>
     </p>
 
+  <%= render @comments %>
+  
+  
+  
   <p> ------------------------------ </p>
   <%= form_for Comment.new, url: food_item_comments_path(@food_item) do |f| %>
     <div class='form-group'>
