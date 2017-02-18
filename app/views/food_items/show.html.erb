@@ -1,5 +1,3 @@
-
-
 <div class="row">
   <div class="col-8">
     <h1> <%= @food_item.name %> 
@@ -27,7 +25,8 @@
     <p> 
       <%= link_to 'Add rating', '#modal-window', class:'btn btn-primary', 'data-toggle' => 'modal' %>
     </p>
-  <%= render @comments %>
+    
+    <%= render @comments %>
   
   </div>
 </div>
@@ -48,9 +47,5 @@
 </div>
 
 
-
-
 <%= link_to 'Edit', edit_food_item_path(@food_item) %> |
 <%= link_to 'Back', food_items_path %>
-
-

@@ -54,6 +54,7 @@ class FoodItemsController < ApplicationController
         format.html { redirect_to @food_item, notice: 'Food item was successfully created.' }
         format.json { render :show, status: :created, location: @food_item }
       else
+        flash[:error] = @food_item.errors.full_messages
         format.html { render :new }
         format.json { render json: @food_item.errors, status: :unprocessable_entity }
       end

@@ -14,6 +14,7 @@ class OrdersController < ApplicationController
       redirect_to food_item_order_path(@food_item, @order)
       
     else
+      flash[:error] = @order.errors.full_messages
       render 'new'
     end
   end

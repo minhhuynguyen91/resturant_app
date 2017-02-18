@@ -1,10 +1,13 @@
 class FoodItem < ApplicationRecord
   belongs_to :section
   has_many :orders
+  has_many :comments, dependent: :destroy
+  
   
   validates :name, presence: true
-  
-  has_many :comments, dependent: :destroy
+  validates :description, presence: true
+  validates :price, presence: true, numericality: true
+
   
   is_impressionable
   
