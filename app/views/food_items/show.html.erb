@@ -3,7 +3,7 @@
 <div class="row">
   <div class="col-8">
     <h1> <%= @food_item.name %> 
-    <span style="float:right;"> <%= @avg_score %> <i class="fa fa-star" aria-hidden="true"></i>  </span> 
+    <span style="float:right;"> <%= @avg_score %> <i class="fa fa-star" aria-hidden="true" style="color:yellow;"></i>  </span> 
     </h1>
     
     <%= image_tag("#{@food_item.image_url}", :alt => "home image", :size => "600x480") %>
@@ -24,35 +24,32 @@
       <%= @food_item.section.name %>
     </p>
 
+    <p> 
+      <%= link_to 'Add rating', '#modal-window', class:'btn btn-primary', 'data-toggle' => 'modal' %>
+    </p>
   <%= render @comments %>
   
   
-  <p> ------------------------------ </p>
-  <%= form_for Comment.new, url: food_item_comments_path(@food_item) do |f| %>
-    <div class='form-group'>
-      <%= f.label :Name %>
-      <%= f.text_field :name, class:'form-control' %>
-    </div>
-    
-    <div class='form-group'>
-      <%= f.label :Content %>
-      <%= f.text_field :content, class:'form-control' %>
-    </div>
-    
-    <div class='form-group'>
-      <%= f.label :Rate %>
-      <%= f.select :rate, options_for_select(0..5),  class:'form-control' %>
-    </div>
-    
-    <%= f.submit "Add comment", class:'btn btn-primary' %>
-
-  <% end %>
-  
   
   </div>
-  
-  
 </div>
+
+
+    
+<div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+           <h3 id="myModalLabel">Rating and Feedback </h3>
+         </div>
+         <div class="modal-body">
+            <%= render 'comments/form', food_item: @food_item %>
+         </div>
+      </div>
+    </div>
+</div>
+
+
 
 
 <%= link_to 'Edit', edit_food_item_path(@food_item) %> |
