@@ -1,7 +1,15 @@
 <div class="card">
   <h3 class="card-header">
-    <%= comment.rate %>
-    <i class="fa fa-star" aria-hidden="true" style="color: yellow;"></i>
+    <% unstar = 5 - comment.rate %>
+    
+    <% comment.rate.times do %>
+      <i class="fa fa-star" aria-hidden="true" style="color: yellow;"></i>
+    <% end %>
+
+    <% unstar.times do %>
+      <i class="fa fa-star" aria-hidden="true" ></i>
+    <% end %>
+
   </h3>
   <div class="card-block">
     <h4 class="card-title"><%= comment.name %> </h4>

@@ -5,10 +5,11 @@ class CommentsController < ApplicationController
     
     if @comment.save
       flash[:success] = "Your comment and rating is created"
-      redirect_to (@food_item)
+      
     else
-      flash[:error] = @comments.errors.full_messages
+      flash[:error] = @comment.errors.full_messages
     end
+    redirect_to (@food_item)
   end
 
   def new
