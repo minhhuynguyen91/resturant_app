@@ -3,4 +3,4 @@ class ApplicationController < ActionController::Base
 end
 
 
-require "#{Rails.root}/app/services/send_sms.rb"
+require "#{Rails.root}/app/services/send_sms_twilio.rb"
