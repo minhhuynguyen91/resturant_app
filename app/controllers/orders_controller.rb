@@ -6,10 +6,14 @@ class OrdersController < ApplicationController
   end
   
   def create
+    send_sms = SendSMS.new()
+
     @food_item = FoodItem.find(params[:food_item_id])
     @order = @food_item.orders.build(order_params)
     if @order.save
       #OrderMailer.order_food(@food_item, @order).deliver_now
+      send_sms.send_order_sms(@food_item, @order)
+      
       flash[:success] = "Thank you for your order"
       redirect_to food_item_order_path(@food_item, @order)
       
