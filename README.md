@@ -4,9 +4,9 @@
 
 Submitted by: **Nguyen Huy Minh**
 
-Time spent: **XX** hours spent in total
+Time spent: **25** hours spent in total
 
-URL: **heroku-app-url**
+URL: **https://limitless-spire-91311.herokuapp.com/**
 
 ## User Stories
 
@@ -48,23 +48,26 @@ URL: **heroku-app-url**
 
 The following **additional** features are implemented:
 
-* [ ] Something nice you added.
+* None
 
 The following **known issues**:
 
-* List bugs or things that don't work yet
+* The Cuisine filter makes me confused. I think it needs to be updated the FoodItem model.
+* The mailer is not stable, I have to disable the feature.
+
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-![Video Walkthrough](path-to-your-GIF-file)
+![Video Walkthrough](https://github.com/minhhuynguyen91/resturant_app/blob/master/demo.gif)
 
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
+GIF created with [Byzanz](https://linux.die.net/man/1/byzanz-record).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+* Very bad skill in frontend design.
+* The model is vital, I think I need to improve it.
 
 ## License
 
